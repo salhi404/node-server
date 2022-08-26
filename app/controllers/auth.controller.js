@@ -11,8 +11,10 @@ exports.signup = (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
+    items:['{"name":"test","price":99,"date":"2022-02-14T00:00:00.000Z","id":50,"colorId":3}'],
   });
-
+  console.log("req.body.temp");
+  console.log(req.body.temp);
   user.save((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -103,6 +105,7 @@ exports.signin = (req, res) => {
         username: user.username,
         email: user.email,
         roles: authorities,
+        items:user.items,
       });
     });
 };

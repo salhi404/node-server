@@ -4,7 +4,7 @@ module.exports = {
   DB: "bezkoder_db",
   USERNAME: "ayoub",
   PASSWORD:"eHx9eEMGAm9zughM",
-  CLUSTER:"auth_shopping",
-  DBNAME:"auth",
+  CLUSTER:"alpha",
+  DBNAME:"auth_shopping",
   USR:"rmwgq4o"
 };
