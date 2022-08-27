@@ -1,13 +1,21 @@
 const express = require("express");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
-
+const config = require("./token.config");
 const dbConfig = require("./app/config/db.config");
 
 const app = express();
 
+var whitelist = ['http://localhost:4200', 'https://shoppingtrackerapp.web.app']
+var  origin= function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  };
 var corsOptions = {
-  origin: "http://localhost:4200",
+  origin: origin,
   credentials:true,
 };
 
