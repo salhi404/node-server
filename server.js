@@ -3,7 +3,6 @@ const cors = require("cors");
 const cookieSession = require("cookie-session");
 const config = require("./token.config");
 const dbConfig = require("./app/config/db.config");
-
 const app = express();
 
 var whitelist = ['http://localhost:4200', 'https://shoppingtrackerapp.web.app']
