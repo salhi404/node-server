@@ -98,7 +98,7 @@ exports.signin = (req, res) => {
         authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
       }
 
-      req.session.token = token;
+      //req.session.token = token;
 
       res.status(200).send({
         id: user._id,
@@ -107,6 +107,7 @@ exports.signin = (req, res) => {
         roles: authorities,
         items:user.items,
         configs:user.configs,
+        token:token,
       });
     });
 };
@@ -122,8 +123,9 @@ exports.signout = async (req, res) => {
 };
 exports.putitems = async (req, res) => {
   try {
-    const token = req.session.token;
-    //console.log(token);
+    const token = req.body.token;
+    console.log("token");
+    console.log(token);
     const verified = jwt.verify(token, config.secret);
     const items=req.body.items;
     if(verified){
@@ -150,18 +152,9 @@ exports.putitems = async (req, res) => {
 }
 
 };
-exports.signout = async (req, res) => {
-  try {
-    req.session = null;
-    
-    return res.status(200).send({ message: "You've been signed out!" });
-  } catch (err) {
-    this.next(err);
-  }
-};
 exports.putconfigs = async (req, res) => {
   try {
-    const token = req.session.token;
+    const token = req.body.token;
     //console.log(token);
     const verified = jwt.verify(token, config.secret);
     const configs=req.body.configs;
