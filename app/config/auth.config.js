@@ -1,3 +1,4 @@
 module.exports = {
-  secret: "bezkoder-secret-key"
+  secret: "wrawsd1nvkn5bxclkm65cnkdk",
+  secret_cookie: "wrawsd1nvkn5bxclkm65cnkdk"
 };

@@ -21,8 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
-    name: "bezkoder-session",
-    secret: "COOKIE_SECRET", // should use as secret environment variable
+    name: "ayoub-session",
+    secret: config.secret_cookie, // should use as secret environment variable
     httpOnly: true
   })
 );
@@ -49,7 +49,7 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome." });
 });
 
 // routes
